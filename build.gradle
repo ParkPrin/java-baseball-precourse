@@ -20,6 +20,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:${junitVersion}'
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.6.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:${junitVersion}'
+    testImplementation('org.mockito:mockito-inline:3.4.0')
 }
 
 java {

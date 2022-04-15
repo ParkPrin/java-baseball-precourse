@@ -18,7 +18,7 @@ public class BaseballServiceTest {
     @Test
     void comparePlayerValueAndTargetValueTest(){
         // given
-        final BaseballService baseballService = getBaseballService(123, "123");
+        final BaseballService baseballService = getBaseballService("123", "123");
 
         // when
         final String compareResult = baseballService.comparePlayerValueAndTargetValue();
@@ -30,7 +30,7 @@ public class BaseballServiceTest {
     @DisplayName("computer Random 값을 Player가 부분적으로 맞추거나 하나도 맞추지 못했을 때 ")
     @ParameterizedTest
     @CsvSource(value = {"123:425:1스트라이크", "123:325:1볼 1스트라이크", "123:365:1볼", "123:456:낫싱"}, delimiter = ':')
-    void playerPlayNumberOfValidationForIsNumberCheckTest(int mComputerValue , String mPlayerValue, String expected){
+    void playerPlayNumberOfValidationForIsNumberCheckTest(String mComputerValue , String mPlayerValue, String expected){
         // given
         final BaseballService baseballService = getBaseballService(mComputerValue, mPlayerValue);
 
@@ -41,7 +41,7 @@ public class BaseballServiceTest {
         assertEquals(expected, compareResult);
     }
 
-    public BaseballService getBaseballService(int mComputerValue, String mPlayerValue){
+    public BaseballService getBaseballService(String mComputerValue, String mPlayerValue){
         Computer mComputer = mock(Computer.class);
         when(mComputer.getRandomThreeDigitsPlayNumber()).thenReturn(mComputerValue);
         Player mPlayer = mock(Player.class);

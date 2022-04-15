@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class BaseballService {
     private final Player player;
-    private final int gameTargetValue;
+    private final String gameTargetValue;
     private Map<Integer, Integer> gameTargetValueMap;
     private Map<Integer, Integer> playerValueMap;
 
@@ -22,7 +22,7 @@ public class BaseballService {
         this.gameTargetValue = computer.getRandomThreeDigitsPlayNumber();
         gameTargetValueMap = new HashMap<>();
         playerValueMap = new HashMap<>();
-        convertIntValueToMap(String.valueOf(gameTargetValue), true);
+        convertIntValueToMap(gameTargetValue, true);
     }
 
     /**
@@ -33,7 +33,7 @@ public class BaseballService {
     public String comparePlayerValueAndTargetValue(){
         final String playerValue = player.playInputAfterValidationToValue();
         convertIntValueToMap(playerValue, false);
-        if (player.equals(String.valueOf(gameTargetValue))){
+        if (player.equals(gameTargetValue)){
             return "3스트라이크";
         }
         return compareMapCheck();
@@ -63,7 +63,7 @@ public class BaseballService {
      * Map초기화 로직
      * @param isGameTarget
      */
-    private void mapClear(boolean isGameTarget){
+    public void mapClear(boolean isGameTarget){
         if (isGameTarget) {
             gameTargetValueMap.clear();
         }

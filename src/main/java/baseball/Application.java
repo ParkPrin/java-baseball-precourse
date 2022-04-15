@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.domain.Computer;
+import baseball.domain.Player;
+import baseball.service.ApplicationExecutePlan;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        new ApplicationExecutePlan(new Computer(), new Player()).executePlan();
     }
 }

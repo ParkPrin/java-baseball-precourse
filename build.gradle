@@ -2,6 +2,10 @@ plugins {
     id 'java'
 }
 
+ext {
+    junitVersion = '5.8.2';
+}
+
 group 'camp.nextstep.edu'
 version '1.0-SNAPSHOT'
 
@@ -12,6 +16,10 @@ repositories {
 
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.0.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:${junitVersion}'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:${junitVersion}'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.6.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:${junitVersion}'
 }
 
 java {

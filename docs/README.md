@@ -1,7 +1,8 @@
 # 구현할 기능리스트
 
 ### 컴퓨터의 랜덤한 숫자 생성 : branch NO: BA_1
-- 게임 시작전 컴퓨터가 서로다른 3자리 숫자를 랜덤하게 생성
+- 게임 시작전 컴퓨터가 서로다른 3자리 숫자를 랜덤하게 
+- 0이 포함되어 있으면 안됨  
 - ccamp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한 구현
   
 ### 사용자로부터 콘솔에서 숫자 입력 : branch NO: BA_2

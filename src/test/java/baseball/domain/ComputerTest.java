@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static baseball.common.CommonVariable.GAME_DIGITS_VALUE_SIZE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.HashSet;
@@ -24,7 +25,7 @@ public class ComputerTest {
         final int randomThreeDigitsPlayNumber = computer.createRandomThreeDigitsPlayNumber();
 
         // then
-        assertEquals(3, String.valueOf(randomThreeDigitsPlayNumber).length());
+        assertEquals(GAME_DIGITS_VALUE_SIZE, String.valueOf(randomThreeDigitsPlayNumber).length());
     }
 
     @DisplayName("야구게임에서 지정된 3자리 랜덤한 숫자 테스트, 세자리 숫자가 다 달라야한다")
@@ -40,7 +41,7 @@ public class ComputerTest {
         }
 
         // then
-        assertEquals(3, randomThreeDigitsPlayNumbers.size());
+        assertEquals(GAME_DIGITS_VALUE_SIZE, randomThreeDigitsPlayNumbers.size());
     }
 
 

@@ -1,6 +1,7 @@
 package baseball.domain;
 
 
+import static baseball.common.CommonVariable.GAME_DIGITS_VALUE_SIZE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -36,7 +37,7 @@ public class PlayerTest {
         }
 
         // then
-        assertEquals(3, playIntpusCharacters.size());
+        assertEquals(GAME_DIGITS_VALUE_SIZE, playIntpusCharacters.size());
     }
 
     @DisplayName("플레이어가 등록한 값이 실패했을 때")

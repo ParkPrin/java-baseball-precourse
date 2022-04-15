@@ -1,5 +1,7 @@
 package baseball.common;
 
+import static baseball.common.CommonVariable.GAME_DIGITS_VALUE_SIZE;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,7 +38,7 @@ public class CommonValidation {
     }
 
     private static boolean digitCheck(String threeDigitsPlayNumberString){
-        return threeDigitsPlayNumberString.length() == 3;
+        return threeDigitsPlayNumberString.length() == GAME_DIGITS_VALUE_SIZE;
     }
 
     private static boolean isNumber(String threeDigitsPlayNumberString){
@@ -52,6 +54,6 @@ public class CommonValidation {
             }
             randomThreeDigitsPlayNumberSet.add(Integer.valueOf(randomThreeDigitsPlayNumberToChar));
         }
-        return randomThreeDigitsPlayNumberSet.size() == 3;
+        return randomThreeDigitsPlayNumberSet.size() == GAME_DIGITS_VALUE_SIZE;
     }
 }

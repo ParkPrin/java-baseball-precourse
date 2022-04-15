@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static baseball.common.Common.threeDigitsNumberOfValidation;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
@@ -30,7 +31,7 @@ public class ComputerTest {
     @CsvSource(value = {"111:false", "123:true", "133:false", "347:true", "307:false"}, delimiter = ':')
     public void randomThreeDigitsPlayNumberOfValidationTest(int randomThreeDigitsPlayNumber, boolean expected){
         // Then
-        assertEquals(expected, computer.randomThreeDigitsPlayNumberOfValidation(randomThreeDigitsPlayNumber));
+        assertEquals(expected, threeDigitsNumberOfValidation(randomThreeDigitsPlayNumber));
     }
 
     @DisplayName("3자리 랜덤한 숫자 생성하는 테스트, 중복 검증 X, 단순 생성")

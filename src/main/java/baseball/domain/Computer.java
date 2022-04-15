@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static baseball.common.CommonValidation.threeDigitsNumberOfValidation;
+import static baseball.common.CommonVariable.GAME_DIGITS_VALUE_SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -29,7 +30,7 @@ public class Computer {
 
     public String createRandomThreeDigitsPlayNumber(){
         StringBuilder randomThreeDigitString = new StringBuilder();
-        while (randomThreeDigitString.toString().length() != 3){
+        while (randomThreeDigitString.toString().length() != GAME_DIGITS_VALUE_SIZE){
             final int randomPlayNum = Randoms.pickNumberInRange(1, 9);
             randomThreeDigitString.append(randomPlayNum);
         }

@@ -1,6 +1,6 @@
 package baseball.service;
 
-import static baseball.common.CommonValidation.threeDigitsNumberOfValidation;
+import static baseball.common.CommonVariable.GAME_PASS_VALUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -24,7 +24,7 @@ public class BaseballServiceTest {
         final String compareResult = baseballService.comparePlayerValueAndTargetValue();
 
         // then
-        assertEquals("3스트라이크", compareResult);
+        assertEquals(GAME_PASS_VALUE, compareResult);
     }
 
     @DisplayName("computer Random 값을 Player가 부분적으로 맞추거나 하나도 맞추지 못했을 때 ")

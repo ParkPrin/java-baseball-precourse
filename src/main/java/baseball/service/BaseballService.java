@@ -1,5 +1,11 @@
 package baseball.service;
 
+import static baseball.common.CommonVariable.EXIST_BALL;
+import static baseball.common.CommonVariable.EXIST_STRIKE;
+import static baseball.common.CommonVariable.EXIST_STRIKE_AND_EXIST_BALL;
+import static baseball.common.CommonVariable.GAME_PASS_VALUE;
+import static baseball.common.CommonVariable.NOT_EXIST_STRIKEN_AND_NOT_EXIST_BALL;
+
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import java.util.HashMap;
@@ -34,7 +40,7 @@ public class BaseballService {
         final String playerValue = player.playInputAfterValidationToValue();
         convertIntValueToMap(playerValue, false);
         if (player.equals(gameTargetValue)){
-            return "3스트라이크";
+            return GAME_PASS_VALUE;
         }
         return compareMapCheck();
     }
@@ -101,14 +107,14 @@ public class BaseballService {
      */
     private String compareMapCheckResultFormat(int strikeNum, int ballNum){
         if (strikeNum != 0 && ballNum != 0){
-            return String.format("%d볼 %d스트라이크", ballNum, strikeNum);
+            return String.format(EXIST_STRIKE_AND_EXIST_BALL, ballNum, strikeNum);
         }
         if (strikeNum == 0 && ballNum == 0){
-            return "낫싱";
+            return NOT_EXIST_STRIKEN_AND_NOT_EXIST_BALL;
         }
         if (strikeNum == 0){
-            return String.format("%d볼", ballNum);
+            return String.format(EXIST_BALL, ballNum);
         }
-        return String.format("%d스트라이크", strikeNum);
+        return String.format(EXIST_STRIKE, strikeNum);
     }
 }

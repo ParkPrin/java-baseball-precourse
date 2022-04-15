@@ -22,8 +22,13 @@ public class CommonValidation {
         return threeDigitsNumberOfValidation(randomThreeDigitsPlayNumberToString);
     }
 
-    public static boolean threeDigitsNumberOfValidation(String threeDigitsPlayNumber){
+    /**
+     * 자리수 확인, 숫자여부 확인 등 유효성검사
+     * @param threeDigitsPlayNumber
+     * @return
+     */
 
+    public static boolean threeDigitsNumberOfValidation(String threeDigitsPlayNumber){
         // 자리수 확인
         if (!digitCheck(threeDigitsPlayNumber)) {
             return false;
@@ -33,7 +38,6 @@ public class CommonValidation {
         if (!isNumber(threeDigitsPlayNumber)) {
             return false;
         }
-
         return commonValidationCheck(threeDigitsPlayNumber);
     }
 

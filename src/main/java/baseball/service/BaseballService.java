@@ -17,6 +17,7 @@ public class BaseballService {
         this.gameTargetValue = computer.getRandomThreeDigitsPlayNumber();
         gameTargetValueMap = new HashMap<>();
         playerValueMap = new HashMap<>();
+        convertIntValueToMap(String.valueOf(gameTargetValue), true);
     }
 
     public String comparePlayerValueAndTargetValue(){

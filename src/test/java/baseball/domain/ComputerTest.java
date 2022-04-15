@@ -22,21 +22,21 @@ public class ComputerTest {
     @Test
     void createRandomThreeDigitsPlayNumberTest(){
         // when
-        final int randomThreeDigitsPlayNumber = computer.createRandomThreeDigitsPlayNumber();
+        final String randomThreeDigitsPlayNumber = computer.createRandomThreeDigitsPlayNumber();
 
         // then
-        assertEquals(GAME_DIGITS_VALUE_SIZE, String.valueOf(randomThreeDigitsPlayNumber).length());
+        assertEquals(GAME_DIGITS_VALUE_SIZE, randomThreeDigitsPlayNumber.length());
     }
 
     @DisplayName("야구게임에서 지정된 3자리 랜덤한 숫자 테스트, 세자리 숫자가 다 달라야한다")
     @Test
     void getRandomThreeDigitsPlayNumberTest(){
         // ginven
-        final int randomThreeDigitsPlayNumber = computer.getRandomThreeDigitsPlayNumber();
+        final String randomThreeDigitsPlayNumber = computer.createRandomThreeDigitsPlayNumber();
 
         // when
         Set<Character> randomThreeDigitsPlayNumbers = new HashSet<>();
-        for(char c: String.valueOf(randomThreeDigitsPlayNumber).toCharArray()){
+        for(char c: randomThreeDigitsPlayNumber.toCharArray()){
             randomThreeDigitsPlayNumbers.add(c);
         }
 

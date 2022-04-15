@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static baseball.common.CommonValidation.threeDigitsNumberOfValidation;
+import static baseball.common.CommonVariable.PLAYER_INPUT_VALUE_ERROR;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -21,7 +22,7 @@ public class Player {
      */
     public String playInputAfterValidation(String playInput){
         if (!threeDigitsNumberOfValidation(playInput)){
-            throw new IllegalArgumentException("1~9의 서로다른 3자리 숫자를 입력하세요.");
+            throw new IllegalArgumentException(PLAYER_INPUT_VALUE_ERROR);
         }
         return playInput;
     }

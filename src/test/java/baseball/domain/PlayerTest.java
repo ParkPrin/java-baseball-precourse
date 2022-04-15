@@ -2,6 +2,7 @@ package baseball.domain;
 
 
 import static baseball.common.CommonVariable.GAME_DIGITS_VALUE_SIZE;
+import static baseball.common.CommonVariable.PLAYER_INPUT_VALUE_ERROR;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -53,7 +54,7 @@ public class PlayerTest {
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1~9의 서로다른 3자리 숫자를 입력하세요.");
+                .hasMessage(PLAYER_INPUT_VALUE_ERROR);
     }
 
 

@@ -13,6 +13,9 @@ public class ApplicationExecutePlan {
         this.player = player;
     }
 
+    /**
+     * 실제 실행계획
+     */
     public void executePlan(){
         BaseballService baseballService = getBaseballServiceInstance();
         while(true){
@@ -29,6 +32,11 @@ public class ApplicationExecutePlan {
         }
     }
 
+    /**
+     * 게임패스(3스트라이크)가 나오고 게임을 다시 시작할지 종료할지를 정하는 로직
+     * @param baseballService
+     * @return
+     */
     private boolean isPassAfterExit(BaseballService baseballService ){
         baseballService.mapClear(true);
         targetValuePassPrintConsole();
@@ -38,7 +46,10 @@ public class ApplicationExecutePlan {
         return false;
     }
 
-
+    /**
+     * BaseballService 객체 생성 또는 초기화
+     * @return
+     */
     private BaseballService getBaseballServiceInstance(){
         return new BaseballService(computer, player);
     }
@@ -57,6 +68,10 @@ public class ApplicationExecutePlan {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    /**
+     * 게임패스 이후 입력값에 따라 결과를 결정하는 실제로직
+     * @return
+     */
     private boolean isExitOrRestart(){
         final String input = Console.readLine();
         if (input.equals("1")) {

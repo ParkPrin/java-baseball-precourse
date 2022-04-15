@@ -12,6 +12,11 @@ public class BaseballService {
     private Map<Integer, Integer> gameTargetValueMap;
     private Map<Integer, Integer> playerValueMap;
 
+    /**
+     * 컴퓨터 객체와 플레이어 객체를 주입 받아 값비교를 진행한다
+     * @param computer
+     * @param player
+     */
     public BaseballService(Computer computer, Player player){
         this.player = player;
         this.gameTargetValue = computer.getRandomThreeDigitsPlayNumber();
@@ -19,6 +24,11 @@ public class BaseballService {
         playerValueMap = new HashMap<>();
         convertIntValueToMap(String.valueOf(gameTargetValue), true);
     }
+
+    /**
+     * 컴퓨터 객체와 플레이어 객체를 주입 받아 값비교 후 결과값 반환
+     * @return
+     */
 
     public String comparePlayerValueAndTargetValue(){
         final String playerValue = player.playInputAfterValidationToValue();
@@ -28,6 +38,12 @@ public class BaseballService {
         }
         return compareMapCheck();
     }
+
+    /**
+     * 숫자를 입력받아서 각 자리별로 Map으로 키와 Value로 변환
+     * @param value
+     * @param isGameTarget
+     */
 
     private void convertIntValueToMap(String value, boolean isGameTarget){
         Map<Integer, Integer> valueMap = null;
@@ -43,6 +59,10 @@ public class BaseballService {
         }
     }
 
+    /**
+     * Map초기화 로직
+     * @param isGameTarget
+     */
     private void mapClear(boolean isGameTarget){
         if (isGameTarget) {
             gameTargetValueMap.clear();
@@ -52,6 +72,10 @@ public class BaseballService {
         }
     }
 
+    /**
+     * computer의 random 값과 Player의 입력값의 일치 여부플 판별하는 로직
+     * @return
+     */
     private String compareMapCheck(){
         int strikeNum =0 , ballNum = 0;
         final Iterator<Integer> iterator = playerValueMap.keySet().iterator();
@@ -68,10 +92,14 @@ public class BaseballService {
                 }
             }
         }
-        return compareMapCheckResult(strikeNum, ballNum);
+        return compareMapCheckResultFormat(strikeNum, ballNum);
     }
 
-    private String compareMapCheckResult(int strikeNum, int ballNum){
+    /**
+     * strikeNum와 ballNum의 결과를 받아서 StringFormat 형태로 반환
+     * @return
+     */
+    private String compareMapCheckResultFormat(int strikeNum, int ballNum){
         if (strikeNum != 0 && ballNum != 0){
             return String.format("%d볼 %d스트라이크", ballNum, strikeNum);
         }

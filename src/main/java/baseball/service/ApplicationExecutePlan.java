@@ -1,5 +1,13 @@
 package baseball.service;
 
+import static baseball.common.CommonVariable.ENTER_ANSWER_VALUE;
+import static baseball.common.CommonVariable.GAME_EXIT;
+import static baseball.common.CommonVariable.GAME_PASS_AFTER_ILLEGAL_INPUT_MESSAGE;
+import static baseball.common.CommonVariable.GAME_PASS_AFTER_IS_REMATCH;
+import static baseball.common.CommonVariable.GAME_PASS_MESSAGE;
+import static baseball.common.CommonVariable.GAME_PASS_VALUE;
+import static baseball.common.CommonVariable.GAME_REMATCH;
+
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.Console;
@@ -19,10 +27,10 @@ public class ApplicationExecutePlan {
     public void executePlan(){
         BaseballService baseballService = getBaseballServiceInstance();
         while(true){
-            System.out.print("숫자를 입력하시오: ");
+            System.out.print(ENTER_ANSWER_VALUE);
             final String gameStepResult = baseballService.comparePlayerValueAndTargetValue();
             gameStepResultPrint(gameStepResult);
-            if (gameStepResult.equals("3스트라이크")){
+            if (gameStepResult.equals(GAME_PASS_VALUE)){
                 if (isPassAfterExit(baseballService)) {
                     break;
                 }
@@ -59,13 +67,13 @@ public class ApplicationExecutePlan {
     }
 
     private void targetValuePassPrintConsole(){
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GAME_PASS_MESSAGE);
+        System.out.println(GAME_PASS_AFTER_IS_REMATCH);
     }
 
     private void illegalArgumentMessage(){
-        System.out.println("잘못 입력하였습니다. 다시 입력하여주세요");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GAME_PASS_AFTER_ILLEGAL_INPUT_MESSAGE);
+        System.out.println(GAME_PASS_AFTER_IS_REMATCH);
     }
 
     /**
@@ -74,10 +82,10 @@ public class ApplicationExecutePlan {
      */
     private boolean isExitOrRestart(){
         final String input = Console.readLine();
-        if (input.equals("1")) {
+        if (input.equals(GAME_REMATCH)) {
             return false;
         }
-        if (input.equals("2")) {
+        if (input.equals(GAME_EXIT)) {
             return true;
         }
         illegalArgumentMessage();

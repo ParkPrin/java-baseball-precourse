@@ -3,10 +3,10 @@ package baseball.common;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Common {
+public class CommonValidation {
 
     /**
-     * Random한 3자리수 검증
+     * 야구게임에서 다루는 3자리 숫자의 규격 검증
      * @param threeDigitsPlayNumber
      * @return
      *

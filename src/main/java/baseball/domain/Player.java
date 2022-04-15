@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static baseball.common.Common.threeDigitsNumberOfValidation;
+import static baseball.common.CommonValidation.threeDigitsNumberOfValidation;
 
 import camp.nextstep.edu.missionutils.Console;
 

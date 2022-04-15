@@ -1,10 +1,8 @@
 package baseball.domain;
 
-import static baseball.common.Common.threeDigitsNumberOfValidation;
+import static baseball.common.CommonValidation.threeDigitsNumberOfValidation;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Computer {
 

@@ -13,32 +13,30 @@ import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ApplicationExecutePlan {
-    private final Computer computer;
-    private final Player player;
-
-    public ApplicationExecutePlan(Computer computer, Player player){
-        this.computer = computer;
-        this.player = player;
-    }
 
     /**
      * 실제 실행계획
      */
-    public void executePlan(){
-        BaseballService baseballService = getBaseballServiceInstance();
+    public void executePlan(BaseballService baseballService, final Computer computer, final Player player){
         while(true){
-            System.out.print(ENTER_ANSWER_VALUE);
-            final String gameStepResult = baseballService.comparePlayerValueAndTargetValue();
-            gameStepResultPrint(gameStepResult);
+            final String gameStepResult =executePlanStartPrint(baseballService);
             if (gameStepResult.equals(GAME_PASS_VALUE)){
                 if (isPassAfterExit(baseballService)) {
                     break;
                 }
-                baseballService = getBaseballServiceInstance();
+                baseballService = getBaseballServiceInstance(computer, player);
             }
             baseballService.mapClear(false);
         }
     }
+
+    private String executePlanStartPrint(BaseballService baseballService){
+        System.out.print(ENTER_ANSWER_VALUE);
+        final String gameStepResult = baseballService.comparePlayerValueAndTargetValue();
+        gameStepResultPrint(gameStepResult);
+        return gameStepResult;
+    }
+
 
     /**
      * 게임패스(3스트라이크)가 나오고 게임을 다시 시작할지 종료할지를 정하는 로직
@@ -58,7 +56,8 @@ public class ApplicationExecutePlan {
      * BaseballService 객체 생성 또는 초기화
      * @return
      */
-    private BaseballService getBaseballServiceInstance(){
+
+    public static BaseballService getBaseballServiceInstance(final Computer computer, final Player player){
         return new BaseballService(computer, player);
     }
 
@@ -71,9 +70,10 @@ public class ApplicationExecutePlan {
         System.out.println(GAME_PASS_AFTER_IS_REMATCH);
     }
 
-    private void illegalArgumentMessage(){
+    private boolean illegalArgumentMessage(){
         System.out.println(GAME_PASS_AFTER_ILLEGAL_INPUT_MESSAGE);
         System.out.println(GAME_PASS_AFTER_IS_REMATCH);
+        return isExitOrRestart();
     }
 
     /**
@@ -88,8 +88,7 @@ public class ApplicationExecutePlan {
         if (input.equals(GAME_EXIT)) {
             return true;
         }
-        illegalArgumentMessage();
-        return isExitOrRestart();
+        return illegalArgumentMessage();
     }
 
 

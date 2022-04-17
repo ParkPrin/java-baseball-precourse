@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.service.ApplicationExecutePlan.getBaseballServiceInstance;
+
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.service.ApplicationExecutePlan;
@@ -11,6 +13,8 @@ public class Application {
      */
 
     public static void main(String[] args) {
-        new ApplicationExecutePlan(new Computer(), new Player()).executePlan();
+        final Computer computer = new Computer();
+        final Player player = new Player();
+        new ApplicationExecutePlan().executePlan(getBaseballServiceInstance(computer, player), computer, player);
     }
 }

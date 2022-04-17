@@ -7,9 +7,11 @@ import static baseball.common.CommonVariable.GAME_PASS_VALUE;
 import static baseball.common.CommonVariable.NOT_EXIST_STRIKEN_AND_NOT_EXIST_BALL;
 
 import baseball.domain.Computer;
+import baseball.domain.Game;
 import baseball.domain.Player;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class BaseballService {
@@ -42,7 +44,7 @@ public class BaseballService {
         if (player.equals(gameTargetValue)){
             return GAME_PASS_VALUE;
         }
-        return compareMapCheck();
+        return new Game().compareMapCheck(gameTargetValueMap, playerValueMap);
     }
 
     /**
@@ -76,45 +78,5 @@ public class BaseballService {
         if (!isGameTarget) {
             playerValueMap.clear();
         }
-    }
-
-    /**
-     * computer의 random 값과 Player의 입력값의 일치 여부플 판별하는 로직
-     * @return
-     */
-    private String compareMapCheck(){
-        int strikeNum =0 , ballNum = 0;
-        final Iterator<Integer> iterator = playerValueMap.keySet().iterator();
-        while(iterator.hasNext()){
-            final Integer key = iterator.next();
-            final Integer playValue = playerValueMap.get(key);
-            final Integer targetValue = gameTargetValueMap.get(key);
-            if (targetValue != null) {
-                if (targetValue == playValue){
-                    strikeNum++;
-                }
-                if (targetValue != playValue){
-                    ballNum++;
-                }
-            }
-        }
-        return compareMapCheckResultFormat(strikeNum, ballNum);
-    }
-
-    /**
-     * strikeNum와 ballNum의 결과를 받아서 StringFormat 형태로 반환
-     * @return
-     */
-    private String compareMapCheckResultFormat(int strikeNum, int ballNum){
-        if (strikeNum != 0 && ballNum != 0){
-            return String.format(EXIST_STRIKE_AND_EXIST_BALL, ballNum, strikeNum);
-        }
-        if (strikeNum == 0 && ballNum == 0){
-            return NOT_EXIST_STRIKEN_AND_NOT_EXIST_BALL;
-        }
-        if (strikeNum == 0){
-            return String.format(EXIST_BALL, ballNum);
-        }
-        return String.format(EXIST_STRIKE, strikeNum);
     }
 }
